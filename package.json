@@ -1,6 +1,10 @@
 {
   "name": "gastroo",
   "version": "0.1.0",
+  "engines" : { 
+    "npm" : ">=8.0.0",
+    "node" : ">=16.0.0"
+  },
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@testing-library/jest-dom": "^5.11.4",
