@@ -52,10 +52,10 @@ const App = ({ isServerInfo }) => {
           <div className="header-right">
             <NativeBalance />
             <TokenPrice
-              address="0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
-              chain="eth"
-              image="https://cryptologos.cc/logos/ethereum-eth-logo.png?v=022"
-              size="40px"
+              address="0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7"
+              chain="avalanche"
+              image="https://cryptologos.cc/logos/avalanche-avax-logo.svg?v=022"
+              size="30px"
             />
             <Account />
             <Chains />

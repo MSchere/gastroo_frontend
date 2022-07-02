@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Avatar, Col, Divider, Image, Row, Space, Typography } from "antd";
 import { MdRemoveRedEye } from "react-icons/md";
 import { FaEthereum } from "react-icons/fa";
+import { AvaxCurr } from "./Chains/Logos";
 import {
   EyeOutlined,
   EyeInvisibleOutlined,
@@ -64,7 +65,7 @@ export const CardContent = ({
 }) => {
   let CurrencyIcon;
   if (price != "") {
-    CurrencyIcon = FaEthereum;
+    CurrencyIcon = AvaxCurr;
   } else {
     CurrencyIcon = Typography.Text;
   }
@@ -74,13 +75,7 @@ export const CardContent = ({
       <Typography.Text>{description}</Typography.Text>
       <Row justify="space-between" style={{ marginTop: 15 }}>
         <Col className="align-items-center">
-          <CurrencyIcon
-            style={{
-              marginRight: "0.19rem",
-              marginBottom: "0.125rem",
-              background: "white",
-            }}
-          />
+          <CurrencyIcon />
           <Typography.Text strong>{price}</Typography.Text>
         </Col>
         <Col className="align-items-center">
