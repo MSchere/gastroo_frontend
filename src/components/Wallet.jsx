@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 import { useMoralis } from "react-moralis";
 import Web3 from "web3";
 import axios from "axios";
-import crypto from "crypto";
+import crypto from "crypto-browserify";
 import Marketplace from "../contracts/Marketplace.json";
 import marketplaceAddress from "../contracts/marketplace-address.json";
 import AES_key from "../contracts/aes_key.json";

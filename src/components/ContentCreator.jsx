@@ -8,7 +8,7 @@ import { useMoralis } from "react-moralis";
 import Web3 from "web3";
 import { Link } from "react-router-dom";
 import { VideoCameraOutlined, DollarOutlined } from "@ant-design/icons";
-import crypto from "crypto";
+import crypto from "crypto-browserify";
 import {
   Card,
   Button,

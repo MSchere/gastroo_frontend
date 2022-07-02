@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import crypto from "crypto";
+import crypto from "crypto-browserify";
 import { getExplorer } from "helpers/networks";
 import { Card, Modal, Button, Menu, Spin, notification } from "antd";
 import { CardContent, ImageCard } from "./NFTCard";
