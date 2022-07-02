@@ -1,15 +1,15 @@
 const webpack = require("webpack");
 module.exports = function override(config, env) {
   config.resolve.fallback = {
-    url: require.resolve("url"),
-    fs: require.resolve("fs"),
-    assert: require.resolve("assert"),
-    crypto: require.resolve("crypto-browserify"),
-    http: require.resolve("stream-http"),
-    https: require.resolve("https-browserify"),
-    os: require.resolve("os-browserify/browser"),
-    buffer: require.resolve("buffer"),
-    stream: require.resolve("stream-browserify"),
+    url: require("url"),
+    fs: require("fs"),
+    assert: require("assert"),
+    crypto: require("crypto-browserify"),
+    http: require("stream-http"),
+    https: require("https-browserify"),
+    os: require("os-browserify/browser"),
+    buffer: require("buffer"),
+    stream: require("stream-browserify"),
   };
   config.plugins.push(
     new webpack.ProvidePlugin({
