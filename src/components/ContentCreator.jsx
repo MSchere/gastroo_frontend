@@ -1,6 +1,3 @@
-import NativeBalance from "./NativeBalance";
-import Address from "./Address/Address";
-import Blockie from "./Blockie";
 import { create as ipfsHttpClient } from "ipfs-http-client";
 import React from "react";
 import { useState } from "react";
@@ -40,8 +37,7 @@ const styles = {
 };
 
 function CreateNFT() {
-  const { Moralis } = useMoralis();
-  const { account } = useMoralis();
+  const { Moralis, account } = useMoralis();
   const web3 = new Web3(Moralis.provider);
   const [imageUrl, setImageUrl] = useState(null);
   const [videoUrl, setVideoUrl] = useState(null);
@@ -307,7 +303,7 @@ function CreateNFT() {
             <DollarOutlined style={{ fontSize: 25 }} />
             <Link onClick={() => setFormType(1)}> GastroTokens</Link>
           </Menu.Item>
-          <Menu.Item key="Airdrop">
+          {/* <Menu.Item key="Airdrop">
             <Button
               type="primary"
               size="small"
@@ -316,7 +312,7 @@ function CreateNFT() {
             >
               Recibir Airdrop
             </Button>
-          </Menu.Item>
+          </Menu.Item> */}
         </Menu>
         <Card
           className="creator-card"
@@ -469,7 +465,7 @@ function CreateNFT() {
             <DollarOutlined style={{ fontSize: 25 }} />
             <Link onClick={() => setFormType(1)}> GastroTokens</Link>
           </Menu.Item>
-          <Menu.Item key="Airdrop">
+          {/* <Menu.Item key="Airdrop">
             <Button
               type="primary"
               size="small"
@@ -478,7 +474,7 @@ function CreateNFT() {
             >
               Recibir Airdrop
             </Button>
-          </Menu.Item>
+          </Menu.Item> */}
         </Menu>
         <Card
           className="creator-card"

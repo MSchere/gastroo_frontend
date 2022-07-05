@@ -95,11 +95,8 @@ const App = ({ isServerInfo }) => {
                 <Tabs.TabPane tab={<span>Ethereum</span>} key="1">
                   <DEX chain="eth" />
                 </Tabs.TabPane>
-                <Tabs.TabPane tab={<span>Binance Smart Chain</span>} key="2">
-                  <DEX chain="bsc" />
-                </Tabs.TabPane>
-                <Tabs.TabPane tab={<span>Polygon</span>} key="3">
-                  <DEX chain="polygon" />
+                <Tabs.TabPane tab={<span>Avalanche</span>} key="2">
+                  <DEX chain="avalanche" />
                 </Tabs.TabPane>
               </Tabs>
             </Route>

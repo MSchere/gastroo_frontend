@@ -69,7 +69,7 @@ $gastroo-hover: hsl(46, 100%, 58%);
 }
 
 .creator-card {
-  //width: clamp(225px, 650px, 1300px);
+  width: 650px;
   box-shadow: 0.3rem 0.62rem  2.2rem hsl(0, 0%, 55%);
   border-radius: 0.625rem;
   font-size: 1rem;
@@ -190,7 +190,17 @@ $gastroo-hover: hsl(46, 100%, 58%);
     align-items: center;
     font-size: 1rem;
     font-weight: 600;
-  }  
+  }
+
+  .creator-card {
+    width: 390px;
+    box-shadow: 0.3rem 0.62rem  2.2rem hsl(0, 0%, 55%);
+    border-radius: 0.625rem;
+    font-size: 1rem;
+    font-weight: 500;
+    align-items: center;
+    margin: 1rem;
+  }
   
 }
 

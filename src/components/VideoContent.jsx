@@ -1,6 +1,7 @@
 import React from "react";
 import { Avatar, Col, Divider, Row, Space, Typography } from "antd";
 import { Link } from "react-router-dom";
+import { getExplorer } from "helpers/networks";
 
 export const VideoContent = ({
   name,
@@ -20,7 +21,12 @@ export const VideoContent = ({
         <Typography.Text strong style={{ fontSize: "1.25rem" }}>
           🧑‍🍳 Por:
         </Typography.Text>
-        <Link style={{ fontSize: "1.06rem", marginLeft: "0.625rem" }}>
+        <Link
+          style={{ fontSize: "1.06rem", marginLeft: "0.625rem" }}
+          onClick={() =>
+            window.open(`${getExplorer("0xa86a")}address/${creator}`, "_blank")
+          }
+        >
           {creator}
         </Link>
         <div className="video-mask">

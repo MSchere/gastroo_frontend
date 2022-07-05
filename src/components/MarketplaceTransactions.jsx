@@ -28,16 +28,20 @@ function MarketplaceTransactions() {
   }, []);
 
   async function loadTransactions() {
+    const maxBlocks = 2000;
+    let latestBlocks;
+    web3.eth.getBlockNumber().then((result) => {
+      latestBlocks = result - maxBlocks;
+    });
     /* create a generic provider and query for unsold market items */
     let data = await contract.getPastEvents("TokenMinted", {
       filter: {
         creator: account,
       }, // Using an array means OR: e.g. 20 or 23
-      fromBlock: 0,
+      fromBlock: latestBlocks,
       toBlock: "latest",
     });
     //Asignacion y formateo de los elementos devueltos
-    console.log(data);
     let key = 0;
     const mintTxs = await Promise.all(
       data.map(async (i) => {
@@ -64,7 +68,7 @@ function MarketplaceTransactions() {
       filter: {
         seller: account,
       }, // Using an array means OR: e.g. 20 or 23
-      fromBlock: 0,
+      fromBlock: latestBlocks,
       toBlock: "latest",
     });
     const offerCreatedTxs = await Promise.all(
@@ -92,7 +96,7 @@ function MarketplaceTransactions() {
       filter: {
         seller: account,
       }, // Using an array means OR: e.g. 20 or 23
-      fromBlock: 0,
+      fromBlock: latestBlocks,
       toBlock: "latest",
     });
     const offerCancelledTxs = await Promise.all(
@@ -120,7 +124,7 @@ function MarketplaceTransactions() {
       filter: {
         buyer: account,
       }, // Using an array means OR: e.g. 20 or 23
-      fromBlock: 0,
+      fromBlock: latestBlocks,
       toBlock: "latest",
     });
     const itemBoughtTxs = await Promise.all(
@@ -148,7 +152,7 @@ function MarketplaceTransactions() {
       filter: {
         seller: account,
       }, // Using an array means OR: e.g. 20 or 23
-      fromBlock: 0,
+      fromBlock: latestBlocks,
       toBlock: "latest",
     });
 
@@ -173,18 +177,27 @@ function MarketplaceTransactions() {
       }),
     );
 
-    //setTransactions(mintTxs);
     let txs = transactions;
     Array.prototype.push.apply(txs, mintTxs);
     Array.prototype.push.apply(txs, offerCreatedTxs);
     Array.prototype.push.apply(txs, offerCancelledTxs);
+    Array.prototype.push.apply(txs, itemBoughtTxs);
     Array.prototype.push.apply(txs, itemSoldTxs);
-    Array.prototype.push.apply(txs, itemSoldTxs);
-
+    txs.sort(compare);
     console.log("TXs:");
     console.log(txs);
     setTransactions(txs);
     setLoaded(true);
+  }
+
+  function compare(a, b) {
+    if (a.blockNumber < b.blockNumber) {
+      return -1;
+    }
+    if (a.blockNumber > b.blockNumber) {
+      return 1;
+    }
+    return 0;
   }
 
   function getDate(timestamp) {
