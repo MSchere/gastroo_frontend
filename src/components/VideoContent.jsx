@@ -63,7 +63,12 @@ export const VideoContent = ({
         <Typography.Text strong style={{ fontSize: "1.25rem" }}>
           🧑‍🍳 Por:
         </Typography.Text>
-        <Link style={{ fontSize: "1.06rem", marginLeft: "0.625rem" }}>
+        <Link
+          style={{ fontSize: "1.06rem", marginLeft: "0.625rem" }}
+          onClick={() =>
+            window.open(`${getExplorer("0xa86a")}address/${creator}`, "_blank")
+          }
+        >
           {creator}
         </Link>
         <div className="video-mask">
@@ -110,7 +115,12 @@ export const VideoContent = ({
         <Typography.Text strong style={{ fontSize: "1.25rem" }}>
           🧑‍🍳 Por:
         </Typography.Text>
-        <Link style={{ fontSize: "1.06rem", marginLeft: "0.625rem" }}>
+        <Link
+          style={{ fontSize: "1.06rem", marginLeft: "0.625rem" }}
+          onClick={() =>
+            window.open(`${getExplorer("0xa86a")}address/${creator}`, "_blank")
+          }
+        >
           {creator}
         </Link>
         <div className="video-mask">
