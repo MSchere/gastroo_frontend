@@ -336,27 +336,6 @@ function CreateNFT() {
           </div>
           <div style={styles.select}>
             <div style={styles.textWrapper}>
-              <Text strong>Descripción</Text>
-            </div>
-            <TextArea
-              placeholder="Describe como preparar tu plato..."
-              showCount
-              maxLength={500}
-              style={{
-                height: 120,
-                width: "100%",
-                marginBottom: 10,
-              }}
-              onChange={(e) => {
-                updateformInput1({
-                  ...formInput1,
-                  description: e.target.value,
-                });
-              }}
-            />
-          </div>
-          <div style={styles.select}>
-            <div style={styles.textWrapper}>
               <Text strong>Ingredientes</Text>
             </div>
             <TextArea
@@ -372,6 +351,27 @@ function CreateNFT() {
                 updateformInput1({
                   ...formInput1,
                   ingredients: e.target.value,
+                });
+              }}
+            />
+          </div>
+          <div style={styles.select}>
+            <div style={styles.textWrapper}>
+              <Text strong>Descripción</Text>
+            </div>
+            <TextArea
+              placeholder="Describe como preparar tu plato..."
+              showCount
+              maxLength={500}
+              style={{
+                height: 120,
+                width: "100%",
+                marginBottom: 10,
+              }}
+              onChange={(e) => {
+                updateformInput1({
+                  ...formInput1,
+                  description: e.target.value,
                 });
               }}
             />
