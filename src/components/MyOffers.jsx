@@ -44,9 +44,12 @@ function MyOffers() {
     console.log(data);
     const items = await Promise.all(
       data.map(async (i) => {
-        const tokenUri = await contract.methods
+        let tokenUri = await contract.methods
           .uri(i.item.tokenId)
           .call({ from: account });
+        if (tokenUri.startsWith("https://ipfs.infura.io")) {
+          tokenUri = updateInfuraUri(tokenUri);
+        }
         const meta = await axios.get(tokenUri).catch(function (error) {
           console.log(error);
         });
@@ -90,12 +93,26 @@ function MyOffers() {
             categories: meta.data.categories,
           };
         }
+        if (item.image.startsWith("https://ipfs.infura.io")) {
+          item.image = updateInfuraUri(item.image);
+        }
+        if (item.video.startsWith("https://ipfs.infura.io")) {
+          item.video = updateInfuraUri(item.video);
+        }
         console.log(item);
         return item;
       }),
     );
     setOffers(items);
     setLoaded(true);
+  }
+
+  function updateInfuraUri(url) {
+    const newUrl = url.replace(
+      "https://ipfs.infura.io",
+      "https://gastroo.infura-ipfs.io",
+    );
+    return newUrl;
   }
 
   async function cancelOffer(offer) {

@@ -47,7 +47,11 @@ function Marketplace() {
         console.log(data);
         const items = await Promise.all(
           data.map(async (i) => {
-            const tokenUri = await contract.methods.uri(i.item.tokenId).call();
+            let tokenUri = await contract.methods.uri(i.item.tokenId).call();
+            //if token uri starts by ipfs.infura.io change it to infura-ipfs.io
+            if (tokenUri.startsWith("https://ipfs.infura.io")) {
+              tokenUri = updateInfuraUri(tokenUri);
+            }
             if (i.offerId != 0) {
               const meta = await axios.get(tokenUri).catch(function (error) {
                 console.log(error);
@@ -71,6 +75,13 @@ function Marketplace() {
                 ingredients: meta.data.ingredients,
                 categories: meta.data.categories,
               };
+              //if image or video starts by ipfs.infura.io change it to infura-ipfs.io
+              if (item.image.startsWith("https://ipfs.infura.io")) {
+                item.image = updateInfuraUri(item.image);
+              }
+              if (item.video.startsWith("https://ipfs.infura.io")) {
+                item.video = updateInfuraUri(item.video);
+              }
               console.log(item);
               return item;
             }
@@ -84,6 +95,14 @@ function Marketplace() {
       }
     }
   });
+
+  function updateInfuraUri(url) {
+    const newUrl = url.replace(
+      "https://ipfs.infura.io",
+      "https://gastroo.infura-ipfs.io",
+    );
+    return newUrl;
+  }
 
   useEffect(() => {
     loadOffers(tokenType);

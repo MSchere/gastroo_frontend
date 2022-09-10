@@ -45,13 +45,16 @@ function MyNFTs() {
 
     const items = await Promise.all(
       data.map(async (i) => {
-        const tokenURI = await contract.methods
+        let tokenUri = await contract.methods
           .uri(i.tokenId)
           .call({ from: account });
+        if (tokenUri.startsWith("https://ipfs.infura.io")) {
+          tokenUri = updateInfuraUri(tokenUri);
+        }
         const ownedAmount = await contract.methods
           .balanceOf(account, i.tokenId)
           .call({ from: account });
-        const meta = await axios.get(tokenURI);
+        const meta = await axios.get(tokenUri);
         let item;
         if (i.isPrivate) {
           item = {
@@ -83,12 +86,26 @@ function MyNFTs() {
             categories: meta.data.categories,
           };
         }
+        if (item.image.startsWith("https://ipfs.infura.io")) {
+          item.image = updateInfuraUri(item.image);
+        }
+        if (item.video.startsWith("https://ipfs.infura.io")) {
+          item.video = updateInfuraUri(item.video);
+        }
         console.log(item);
         return item;
       }),
     );
     setNfts(items);
     setLoaded(true);
+  }
+
+  function updateInfuraUri(url) {
+    const newUrl = url.replace(
+      "https://ipfs.infura.io",
+      "https://gastroo.infura-ipfs.io",
+    );
+    return newUrl;
   }
 
   function decrypt(content) {

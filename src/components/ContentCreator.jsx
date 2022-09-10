@@ -1,4 +1,4 @@
-import { create as ipfsHttpClient } from "ipfs-http-client";
+import { create as ipfsClient } from "ipfs-http-client";
 import React from "react";
 import { useState } from "react";
 import { useMoralis } from "react-moralis";
@@ -61,7 +61,7 @@ function CreateNFT() {
     categories: "",
   });
 
-  const client = ipfsHttpClient("https://ipfs.infura.io:5001/api/v0");
+  const client = getIPFSClient();
 
   const contract = new web3.eth.Contract(
     Marketplace.abi,
@@ -117,6 +117,26 @@ function CreateNFT() {
     } catch (error) {
       console.log("Upss...Algo ha ido mal subiendo tu archivo: ", error);
     }
+  }
+
+  function getIPFSClient() {
+    const projectId = "2EZdVYGZiN1O8g79KMXy4Nqiwzh";
+    const projectSecret = "5181287303a50fde86183c73af1554d1";
+    const auth =
+      "Basic " +
+      Buffer.from(projectId + ":" + projectSecret).toString("base64");
+
+    const client = ipfsClient({
+      host: "ipfs.infura.io",
+      port: 5001,
+      protocol: "https",
+      apiPath: "/api/v0",
+      headers: {
+        authorization: auth,
+      },
+    });
+
+    return client;
   }
 
   async function airdrop() {
