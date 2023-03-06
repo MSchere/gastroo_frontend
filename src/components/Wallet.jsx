@@ -103,7 +103,7 @@ function MyNFTs() {
   function updateInfuraUri(url) {
     const newUrl = url.replace(
       "https://ipfs.infura.io",
-      "https://gastroo.infura-ipfs.io",
+      "https://infura-ipfs.io",
     );
     return newUrl;
   }

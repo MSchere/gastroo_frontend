@@ -5,7 +5,8 @@
 # Gastroo Web3: Monetiza tu contenido culinario
 _Un marketplace en Avalanche para la publicación o venta de recetas y videos culinarios en la web descentralizada._
 
-## Ya puedes probarlo en [gastroo.es](http://gastroo.es)!
+* Este frontend necesita mantenimiento, ya que Moralis ha deprecado su librería react-moralis y se han roto varias funcionalidades.
+* ToDo: Adaptar el proyecto para que todas las funciones web3 se realizen con ethers.js
 
 **Gastroo es un proyecto que busca fusionar el mundo culinario con la web descentralizada y provee una plataforma fácil de usar donde aficionados y profesionales de la cocina puedan sacar partido de su contenido gastronómico. En Gastroo, existen tres tipos principales de tokens:**
 * **GastroVídeos públicos: Cualquiera los puede ver mientras estén disponibles en el mercado.**
